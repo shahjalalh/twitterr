@@ -18,3 +18,6 @@ class Tweet(models.Model):
 
     def __str__(self):
         return str(self.content)
+
+    class Meta:
+        ordering = ['-timestamp']
