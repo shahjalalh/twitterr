@@ -13,19 +13,15 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url, include
+from django.conf.urls import url
 from django.contrib import admin
 
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import home
+from tweets.views import tweet_detail_view
 
 urlpatterns = [
-    url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name='home'),
-    url(r'^tweet/', include('tweets.urls', namespace='tweet')),
+    # url(r'^admin/', admin.site.urls),
+    url(r'^$', tweet_detail_view, name="detail")
 ]
-
-if settings.DEBUG:
-    urlpatterns += (static(settings.STATIC_URL, document_root=settings.STATIC_ROOT))
