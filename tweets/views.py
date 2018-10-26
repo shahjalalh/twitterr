@@ -9,10 +9,16 @@ from django.views.generic import (
     UpdateView
 )
 
+from .forms import TweetModelForm
+from .mixins import FormUserNeededMixin
 from .models import Tweet
 
 
 # Create your views here.
+
+class TweetCreateView(FormUserNeededMixin, CreateView):
+    form_class = TweetModelForm
+    template_name = 'tweets/create_view.html'
 
 
 class TweetDetailView(DetailView):

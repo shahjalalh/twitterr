@@ -19,9 +19,15 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from tweets.views import tweet_detail_view
+from tweets.views import (
+    TweetCreateView,
+    TweetDetailView,
+    TweetListView
+)
+
 
 urlpatterns = [
-    # url(r'^admin/', admin.site.urls),
-    url(r'^$', tweet_detail_view, name="detail")
+    url(r'^search/$', TweetListView.as_view(), name='list'),
+    url(r'create/$', TweetCreateView.as_view(), name='create'),
+    url(r'^(?P<pk>\d+)/$', TweetDetailView.as_view(), name="detail"),
 ]
