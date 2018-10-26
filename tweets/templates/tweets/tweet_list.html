@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-{% load recommended %}
+{#{% load recommended %}#}
 
 <style>
     #tweet-container{
@@ -24,7 +24,7 @@
             <hr/>
             <br/>
             <p class="lead">Recommended Users</p>
-            {% recommended request.user %}
+            {% comment %}{% recommended request.user %}{% endcomment %}
         </div>
         <div class="col-sm-9">
             {% if not request.GET.q %}

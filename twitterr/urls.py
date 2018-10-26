@@ -19,12 +19,16 @@ from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
 
-from .views import home
+from tweets.views import TweetListView
+from .views import home, SearchView
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$', home, name='home'),
+    url(r'^$', TweetListView.as_view(), name='home'),
+    url(r'^search/$', SearchView.as_view(), name='search'),
     url(r'^tweet/', include('tweets.urls', namespace='tweet')),
+
+    url(r'^', include('django.contrib.auth.urls')),
 ]
 
 if settings.DEBUG:
