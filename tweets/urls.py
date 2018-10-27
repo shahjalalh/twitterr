@@ -14,6 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url
+from django.views.generic.base import RedirectView
 from django.contrib import admin
 
 from django.conf import settings
@@ -29,6 +30,7 @@ from tweets.views import (
 
 
 urlpatterns = [
+    url('^$', RedirectView.as_view(url="/")),
     url(r'^search/$', TweetListView.as_view(), name='list'),
     url(r'^create/$', TweetCreateView.as_view(), name='create'),
     url(r'^(?P<pk>\d+)/$', TweetDetailView.as_view(), name="detail"),
