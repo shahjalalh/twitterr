@@ -41,8 +41,9 @@ INSTALLED_APPS = [
     'crispy_forms',
     'rest_framework',
 
-    'tweets',
     'accounts',
+    'hashtags',
+    'tweets',
 ]
 
 MIDDLEWARE = [
@@ -56,6 +57,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'twitterr.urls'
+LOGIN_URL = "/login/"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = LOGIN_REDIRECT_URL
 
 TEMPLATES = [
     {
